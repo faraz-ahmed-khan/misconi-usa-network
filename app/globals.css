@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --color-heading: #0F172A;
+  --color-body: #374151;
+  --color-muted: #6B7280;
+  --color-blue: #1E3A8A;
+  --color-footer: #0F1E30;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface-white text-type-body antialiased;
+  font-family: var(--font-inter);
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-blue;
+}
+
+.prose-width {
+  max-width: 65ch;
+}
