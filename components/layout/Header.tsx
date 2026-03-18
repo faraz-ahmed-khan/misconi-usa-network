@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from 'next/image';
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { NAV_ITEMS, LINKS, ROUTES } from "@/lib/constants";
@@ -34,7 +35,12 @@ export default function Header() {
           className="text-[18px] font-bold text-type-heading focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 rounded"
           aria-label="Misconi USA Network home"
         >
-          {LOGO_TEXT}
+          <Image
+              src="/images/logo.png" 
+              alt=""
+              width={130}                
+              height={130}                      
+             />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
