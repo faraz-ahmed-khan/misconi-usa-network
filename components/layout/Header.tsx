@@ -38,8 +38,8 @@ export default function Header() {
           <Image
               src="/images/logo.png" 
               alt=""
-              width={130}                
-              height={130}                      
+              width={65}                
+              height={65}                      
              />
         </Link>
 
