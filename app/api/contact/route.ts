@@ -1,47 +1,65 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { ContactFormPayload, ContactApiResponse } from "@/lib/types";
+import { submitNetworkContactToZoho } from "@/lib/zoho";
 
 /**
  * POST /api/contact
  * Accepts contact form payload, validates required fields,
- * simulates sending data to Zoho. Returns success JSON; no redirect.
- * TODO: Replace mock logic with real Zoho integration when ready.
+ * sends data to Zoho Creator, and returns JSON response.
  */
-export async function POST(request: NextRequest): Promise<NextResponse<ContactApiResponse>> {
+export async function POST(
+  request: NextRequest
+): Promise<NextResponse<ContactApiResponse>> {
   try {
     const body = (await request.json()) as Partial<ContactFormPayload>;
-    const { fullName, email, message } = body;
+    const fullName = body.fullName?.trim() || "";
+    const email = body.email?.trim() || "";
+    const phone = body.phone?.trim() || "";
+    const companyName = body.companyName?.trim() || "";
+    const message = body.message?.trim() || "";
 
-    if (!fullName?.trim()) {
+    if (!fullName) {
       return NextResponse.json(
         { success: false, message: "Full name is required." },
         { status: 400 }
       );
     }
-    if (!email?.trim()) {
+
+    if (!email) {
       return NextResponse.json(
         { success: false, message: "Email is required." },
         { status: 400 }
       );
     }
-    if (!message?.trim()) {
+
+    if (!message) {
       return NextResponse.json(
         { success: false, message: "Message is required." },
         { status: 400 }
       );
     }
 
-    // Simulate sending to Zoho (no real integration yet)
-    // In production, replace with Zoho CRM/Forms API call here.
-    await new Promise((r) => setTimeout(r, 400));
+    await submitNetworkContactToZoho({
+      fullName,
+      email,
+      phone,
+      companyName,
+      message,
+    });
 
     return NextResponse.json({
       success: true,
-      message: "Thank you. Your message has been received. We will respond as soon as possible.",
+      message:
+        "Thank you. Your message has been received. We will respond as soon as possible.",
     });
-  } catch {
+  } catch (error) {
+    console.error("Contact API error:", error);
+
     return NextResponse.json(
-      { success: false, message: "Something went wrong. Please try again." },
+      {
+        success: false,
+        message: "Something went wrong. Please try again.",
+      },
       { status: 500 }
     );
   }
