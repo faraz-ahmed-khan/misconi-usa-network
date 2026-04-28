@@ -89,7 +89,6 @@ export async function submitNetworkContactToZoho(
       headers: {
         Authorization: `Zoho-oauthtoken ${accessToken}`,
         "Content-Type": "application/json",
-        environment: "development"
       },
       body: JSON.stringify(payload),
       cache: "no-store",
