@@ -21,6 +21,30 @@ type ZohoCreatorErrorResponse = {
   error?: string;
 };
 
+type ZohoCreatorResponse = {
+  code?: number | string;
+  message?: string;
+  data?: Array<Record<string, unknown>>;
+  result?: Array<Record<string, unknown>>;
+};
+
+function splitName(fullName: string): { first_name: string; last_name: string } {
+  const clean = fullName.trim().replace(/\s+/g, " ");
+  if (!clean) {
+    return { first_name: "", last_name: "" };
+  }
+
+  const parts = clean.split(" ");
+  if (parts.length === 1) {
+    return { first_name: parts[0], last_name: "" };
+  }
+
+  return {
+    first_name: parts[0],
+    last_name: parts.slice(1).join(" "),
+  };
+}
+
 export async function getAccessToken(): Promise<string> {
   const clientId = process.env.ZOHO_CLIENT_ID;
   const clientSecret = process.env.ZOHO_CLIENT_SECRET;
@@ -69,11 +93,12 @@ export async function submitNetworkContactToZoho(
   }
 
   const accessToken = await getAccessToken();
+  const name = splitName(input.fullName);
 
   const payload = {
     data: [
       {
-        Full_Name: input.fullName,
+        Full_Name: name,
         Email: input.email,
         Phone_Number: input.phone || "",
         Company_Name: input.companyName || "",
@@ -89,19 +114,47 @@ export async function submitNetworkContactToZoho(
       headers: {
         Authorization: `Zoho-oauthtoken ${accessToken}`,
         "Content-Type": "application/json",
+        "environment": "development",
       },
       body: JSON.stringify(payload),
       cache: "no-store",
     }
   );
 
-  const data = await res.json();
+  const data = (await res.json()) as ZohoCreatorResponse | ZohoCreatorErrorResponse;
 
   if (!res.ok) {
     const errorData = data as ZohoCreatorErrorResponse;
     throw new Error(
       errorData.message || errorData.error || "Zoho Creator rejected the contact submission."
     );
+  }
+
+  const responseCode = String((data as ZohoCreatorResponse).code ?? "");
+  if (responseCode && responseCode !== "3000") {
+    const errorData = data as ZohoCreatorErrorResponse;
+    throw new Error(
+      errorData.message ||
+        errorData.error ||
+        `Zoho Creator returned non-success code ${responseCode}.`
+    );
+  }
+
+  const zohoData = (data as ZohoCreatorResponse).data ?? (data as ZohoCreatorResponse).result;
+  const firstRow = zohoData && zohoData.length > 0 ? zohoData[0] : undefined;
+  if (firstRow) {
+    const rowCodeRaw = (firstRow as { code?: unknown }).code;
+    if (rowCodeRaw !== undefined && String(rowCodeRaw) !== "3000") {
+      const rowError = (firstRow as { error?: unknown; message?: unknown }).error;
+      const rowMessage = (firstRow as { message?: unknown }).message;
+      throw new Error(
+        String(
+          rowMessage ??
+            rowError ??
+            `Zoho row-level insert failed with code ${String(rowCodeRaw)}.`
+        )
+      );
+    }
   }
 
   return data;
