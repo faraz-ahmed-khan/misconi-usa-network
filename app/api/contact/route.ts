@@ -17,6 +17,7 @@ export async function POST(
     const phone = body.phone?.trim() || "";
     const companyName = body.companyName?.trim() || "";
     const message = body.message?.trim() || "";
+    
 
     if (!fullName) {
       return NextResponse.json(

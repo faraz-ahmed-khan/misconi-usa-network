@@ -4,21 +4,10 @@ import EcosystemOverviewSection from "@/components/home/EcosystemOverviewSection
 import HowReadinessWorksSection from "@/components/home/HowReadinessWorksSection";
 import EducationSupportSection from "@/components/home/EducationSupportSection";
 import TargetAudienceSection from "@/components/home/TargetAudienceSection";
-import TrustSection from "@/components/home/TrustSection";
 import CTASection from "@/components/home/CTASection";
 import FAQSection from "@/components/home/FAQSection";
-import { MOCK_TESTIMONIALS, MOCK_PARTNERS } from "@/lib/mock-data";
 
 export default function HomePage() {
-  const testimonials = MOCK_TESTIMONIALS.map((t) => ({
-    id: t.id,
-    quote: t.quote,
-    author: t.author,
-    role: t.role,
-    company: t.company,
-  }));
-  const partners = MOCK_PARTNERS;
-
   return (
     <>
       <HeroSection />
@@ -27,16 +16,6 @@ export default function HomePage() {
       <HowReadinessWorksSection />
       <EducationSupportSection />
       <TargetAudienceSection />
-      <TrustSection
-        testimonials={testimonials.map((t) => ({
-          id: t.id,
-          quote: t.quote,
-          author: t.author,
-          role: t.role,
-          company: t.company,
-        }))}
-        partners={partners}
-      />
       <CTASection />
       <FAQSection />
     </>

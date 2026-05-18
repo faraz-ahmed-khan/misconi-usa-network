@@ -4,7 +4,7 @@ import type { ResourcesResponse } from "@/lib/types";
 
 /**
  * GET /api/resources
- * Returns mock resources grouped into articles, guides, videos, glossary, faq.
+ * Returns mock resources grouped into articles, guides, glossary, faq.
  */
 export async function GET(): Promise<NextResponse<ResourcesResponse>> {
   return NextResponse.json(MOCK_RESOURCES);

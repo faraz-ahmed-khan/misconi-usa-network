@@ -6,11 +6,11 @@ import { MOCK_RESOURCES } from "@/lib/mock-data";
 
 export const metadata = {
   title: "Resources | Misconi USA Network",
-  description: "Articles, guides, videos, glossary, and FAQ to learn the language of readiness.",
+  description: "Articles, guides, glossary, and FAQ to learn the language of readiness.",
 };
 
 export default function ResourcesPage() {
-  const { articles, guides, videos, glossary, faq } = MOCK_RESOURCES;
+  const { articles, guides, glossary, faq } = MOCK_RESOURCES;
 
   return (
     <div className="min-h-screen bg-surface-white">
@@ -21,7 +21,7 @@ export default function ResourcesPage() {
               Learn the Language of Readiness
             </h1>
             <p className="mt-4 text-[17px] text-type-body leading-[1.7]">
-              Explore articles, guides, videos, and educational materials that help you understand readiness, the ecosystem, and the Prime Agent model.
+              Explore articles, guides, and reference materials that help you understand readiness, the ecosystem, and your next step.
             </p>
           </Reveal>
         </div>
@@ -60,27 +60,8 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section aria-labelledby="videos-heading">
-          <Reveal delay={200}>
-            <SectionHeading id="videos-heading" title="Videos" />
-          </Reveal>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {videos.map((item, index) => (
-              <Reveal key={item.id} delay={80 * index}>
-                <Card>
-                  <div className="aspect-video rounded-lg bg-surface-gray flex items-center justify-center text-type-muted text-[15px]">
-                    Video placeholder
-                  </div>
-                  <CardTitle className="mt-4 text-base">{item.title}</CardTitle>
-                  <CardDescription>{item.description}</CardDescription>
-                </Card>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
         <section aria-labelledby="glossary-heading">
-          <Reveal delay={300}>
+          <Reveal delay={200}>
             <SectionHeading id="glossary-heading" title="Glossary" />
           </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -96,7 +77,7 @@ export default function ResourcesPage() {
         </section>
 
         <section aria-labelledby="faq-heading">
-          <Reveal delay={400}>
+          <Reveal delay={300}>
             <SectionHeading id="faq-heading" title="FAQ" />
           </Reveal>
           <div className="mt-8 space-y-4">
@@ -111,7 +92,7 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <Reveal delay={500}>
+        <Reveal delay={400}>
           <div className="text-center pt-8">
             <a
               href={LINKS.GYBS}

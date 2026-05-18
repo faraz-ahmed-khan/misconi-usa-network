@@ -8,8 +8,6 @@ const AUDIENCES = [
   "Anyone who needs to understand readiness before taking action",
 ];
 
-const CLOSING = "If you need clarity, orientation, or education, this is your starting point.";
-
 export default function TargetAudienceSection() {
   return (
     <section className="bg-surface-gray py-24 px-4 sm:px-6 lg:px-8" aria-labelledby="target-audience-heading">
@@ -31,13 +29,6 @@ export default function TargetAudienceSection() {
                 {a}
               </span>
             ))}
-          </div>
-        </div>
-        <div className="mt-12 flex justify-center">
-          <div className="w-full max-w-[720px] rounded-xl bg-footer-dark py-8 px-6 text-center">
-            <p className="text-[18px] font-medium text-white">
-              {CLOSING}
-            </p>
           </div>
         </div>
       </div>

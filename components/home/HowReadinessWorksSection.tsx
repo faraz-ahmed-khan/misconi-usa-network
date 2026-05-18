@@ -1,7 +1,6 @@
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Icon } from "@/components/shared/Icon";
 import { Timeline } from "@/components/shared/Timeline";
-import { VideoSection } from "@/components/shared/VideoSection";
 
 const EVALUATES = [
   "Identity and documentation",
@@ -38,9 +37,6 @@ export default function HowReadinessWorksSection() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-[17px] text-type-body leading-[1.75]">
-              Readiness protects your business, increases your chances of success, and ensures you&apos;re matched with opportunities you can actually fulfill.
-            </p>
           </div>
 
           <div className="rounded-card bg-footer-dark p-8">
@@ -55,9 +51,6 @@ export default function HowReadinessWorksSection() {
                 </li>
               ))}
             </ol>
-            <p className="mt-8 text-[14px] text-footer-text italic">
-              Readiness protects your business
-            </p>
           </div>
         </div>
 
@@ -66,13 +59,6 @@ export default function HowReadinessWorksSection() {
             How businesses move through the ecosystem
           </h3>
           <Timeline steps={TIMELINE_STEPS} className="mt-10 max-w-2xl mx-auto" />
-        </div>
-
-        <div className="mt-20 bg-surface-gray-light rounded-card py-16 px-4">
-          <VideoSection
-            title="Introduction to Readiness"
-            description="A short overview of readiness and how the ecosystem supports your business."
-          />
         </div>
       </div>
     </section>

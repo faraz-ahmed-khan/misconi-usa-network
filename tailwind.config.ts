@@ -77,7 +77,6 @@ const config: Config = {
         button: "0 4px 12px rgba(30,58,138,0.18)",
         card: "0 8px 24px rgba(0,0,0,0.08)",
         "card-hover": "0 8px 24px rgba(0,0,0,0.07)",
-        testimonial: "0 4px 24px rgba(0,0,0,0.06)",
       },
       transitionDuration: {
         DEFAULT: "200ms",
