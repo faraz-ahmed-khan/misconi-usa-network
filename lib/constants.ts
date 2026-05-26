@@ -1,8 +1,8 @@
-/** External links - used across header, footer, CTAs */
+/** External links from env (NEXT_PUBLIC_* for client components). */
 export const LINKS = {
-  GYBS: "https://get-your-business-score-com.vercel.app/",
-  MISCONI_USA: "https://misocniusa.vercel.app/",
-  SBA_READY: "https://SBAReady.org",
+  GYBS: process.env.NEXT_PUBLIC_GYBS_URL ?? "",
+  MISCONI_USA: process.env.NEXT_PUBLIC_MISCONI_USA_URL ?? "",
+  SBA_READY: process.env.NEXT_PUBLIC_SBA_READY_URL ?? "",
 } as const;
 
 export const ROUTES = {
