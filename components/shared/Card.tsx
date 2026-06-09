@@ -19,7 +19,7 @@ export function Card({ children, className }: CardProps) {
 }
 
 export function CardTitle({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <h3 className={cn("text-subhead font-bold text-type-heading", className)}>{children}</h3>;
+  return <h3 className={cn("heading-card", className)}>{children}</h3>;
 }
 
 export function CardDescription({ children, className }: { children: React.ReactNode; className?: string }) {

@@ -2,19 +2,19 @@ import Link from "next/link";
 import { ROUTES, LINKS } from "@/lib/constants";
 
 const BRAND_DESCRIPTION =
-  "Misconi USA Network is the education layer of the Misconi Readiness Ecosystem. Learn what readiness means, how the ecosystem works, and how to move confidently into your next step.";
+  "The Misconi USA Network is your education center for business readiness, SBA alignment, documentation, funding, procurement, and opportunity preparation.";
 
 const QUICK_LINKS = [
-  { label: "About", href: ROUTES.ABOUT },
-  { label: "Ecosystem", href: ROUTES.ECOSYSTEM },
-  { label: "Readiness", href: ROUTES.READINESS },
-  { label: "Resources", href: ROUTES.RESOURCES },
+  { label: "Readiness Education", href: ROUTES.READINESS },
+  { label: "SBA Education", href: ROUTES.SBA },
+  { label: "Documentation", href: ROUTES.DOCUMENTATION },
+  { label: "Funding", href: ROUTES.FUNDING },
+  { label: "Procurement", href: ROUTES.PROCUREMENT },
+  { label: "Opportunity", href: ROUTES.OPPORTUNITY },
   { label: "Contact", href: ROUTES.CONTACT },
 ];
 
 const EXTERNAL_LINKS = [
-  { label: "GYBS", href: LINKS.GYBS },
-  { label: "MisconiUSA.com", href: LINKS.MISCONI_USA },
   { label: "SBAReady.org", href: LINKS.SBA_READY },
 ];
 
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-[11px] font-medium uppercase tracking-[0.1em] text-type-muted">Quick links</h3>
+            <h3 className="text-[11px] font-medium uppercase tracking-[0.1em] text-type-muted">Education</h3>
             <ul className="mt-4 space-y-2.5">
               {QUICK_LINKS.map(({ label, href }) => (
                 <li key={href}>
@@ -52,7 +52,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-[11px] font-medium uppercase tracking-[0.1em] text-type-muted">Ecosystem & legal</h3>
+            <h3 className="text-[11px] font-medium uppercase tracking-[0.1em] text-type-muted">Resources</h3>
             <ul className="mt-4 space-y-2.5">
               {EXTERNAL_LINKS.map(({ label, href }) => (
                 <li key={href}>
@@ -68,44 +68,20 @@ export default function Footer() {
               ))}
               <li>
                 <Link
-                  href={ROUTES.CONTACT}
-                  className="text-[14px] text-footer-text hover:text-white transition-colors duration-200 ease focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue rounded"
-                >
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link
                   href={ROUTES.PRIVACY}
                   className="text-[14px] text-footer-text hover:text-white transition-colors duration-200 ease focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue rounded"
                 >
-                  Privacy Policy
+                  Terms &amp; Policies
                 </Link>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-footer-border flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 pt-8 border-t border-footer-border">
           <p className="text-[13px] text-type-muted">
             © {new Date().getFullYear()} Misconi USA Network. Educational use only.
           </p>
-          <div className="flex gap-6" aria-label="Social media">
-            <a
-              href="#"
-              className="text-[14px] text-footer-text hover:text-white transition-colors duration-200 ease focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue rounded"
-              aria-label="LinkedIn"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="#"
-              className="text-[14px] text-footer-text hover:text-white transition-colors duration-200 ease focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue rounded"
-              aria-label="Twitter"
-            >
-              Twitter
-            </a>
-          </div>
         </div>
       </div>
     </footer>

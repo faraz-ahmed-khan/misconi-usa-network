@@ -10,15 +10,27 @@ export const ROUTES = {
   ABOUT: "/about",
   ECOSYSTEM: "/ecosystem",
   READINESS: "/readiness",
+  SBA: "/sba",
+  DOCUMENTATION: "/documentation",
+  FUNDING: "/funding",
+  PROCUREMENT: "/procurement",
+  OPPORTUNITY: "/opportunity",
   RESOURCES: "/resources",
   CONTACT: "/contact",
   PRIVACY: "/privacy",
 } as const;
 
 export const NAV_ITEMS = [
-  { label: "About", href: ROUTES.ABOUT },
-  { label: "Ecosystem", href: ROUTES.ECOSYSTEM },
   { label: "Readiness", href: ROUTES.READINESS },
-  { label: "Resources", href: ROUTES.RESOURCES },
+  { label: "SBA", href: ROUTES.SBA },
   { label: "Contact", href: ROUTES.CONTACT },
 ] as const;
+
+export const NAV_EDUCATION_ITEMS = [
+  { label: "Documentation", href: ROUTES.DOCUMENTATION },
+  { label: "Funding", href: ROUTES.FUNDING },
+  { label: "Procurement", href: ROUTES.PROCUREMENT },
+  { label: "Opportunity", href: ROUTES.OPPORTUNITY },
+] as const;
+
+export const SUPPORT_EMAIL = "support@misconiusanetwork.com";

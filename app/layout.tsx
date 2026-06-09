@@ -4,9 +4,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Misconi USA Network | Education & Orientation for Readiness",
+  title: "Misconi USA Network | Network Readiness & SBA Education",
   description:
-    "Learn how Misconi USA helps businesses understand readiness, explore the ecosystem, and choose their next step. Clarity before action.",
+    "Your education center for business readiness, SBA requirements, documentation, funding, procurement, and opportunity preparation.",
 };
 
 export default function RootLayout({

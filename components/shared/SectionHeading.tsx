@@ -11,11 +11,16 @@ interface SectionHeadingProps {
 export function SectionHeading({ id, title, subtitle, className, centered }: SectionHeadingProps) {
   return (
     <div className={cn("max-w-3xl", centered && "text-center mx-auto", className)}>
-      <h2 id={id} className="text-section font-bold text-type-heading">
+      <h2 id={id} className="heading-section text-balance">
         {title}
       </h2>
       {subtitle && (
-        <p className={cn("mt-3 text-body-lg text-type-muted leading-[1.75]", centered && "text-center")}>
+        <p
+          className={cn(
+            "mt-4 text-body-lg text-type-muted leading-[1.75]",
+            centered && "text-center mx-auto"
+          )}
+        >
           {subtitle}
         </p>
       )}
