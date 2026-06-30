@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { NAV_ITEMS, NAV_EDUCATION_ITEMS, LINKS, ROUTES } from "@/lib/constants";
+import { NAV_ITEMS, NAV_EDUCATION_ITEMS, LINKS, ROUTES, INVESTOR_GUIDE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export default function Header() {
@@ -114,7 +114,14 @@ export default function Header() {
           </Link>
         </nav>
 
-        <div className="hidden lg:block shrink-0">
+        <div className="hidden lg:flex shrink-0 items-center gap-3">
+          <a
+            href={INVESTOR_GUIDE.href}
+            download={INVESTOR_GUIDE.downloadName}
+            className="inline-flex items-center justify-center whitespace-nowrap rounded-button border-2 border-brand-blue bg-white px-4 py-2.5 text-[13px] font-semibold text-brand-blue hover:bg-surface-blue-pale transition-all duration-200 ease focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
+          >
+            Download Investor Guide
+          </a>
           <a
             href={LINKS.GYBS}
             target="_blank"
@@ -179,6 +186,14 @@ export default function Header() {
               {label}
             </Link>
           ))}
+          <a
+            href={INVESTOR_GUIDE.href}
+            download={INVESTOR_GUIDE.downloadName}
+            className="mt-2 rounded-button border-2 border-brand-blue bg-white px-4 py-3 text-center text-[14px] font-semibold text-brand-blue hover:bg-surface-blue-pale"
+            onClick={() => setMobileOpen(false)}
+          >
+            Download Investor Guide
+          </a>
           <a
             href={LINKS.GYBS}
             target="_blank"

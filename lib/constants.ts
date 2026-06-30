@@ -34,3 +34,8 @@ export const NAV_EDUCATION_ITEMS = [
 ] as const;
 
 export const SUPPORT_EMAIL = "support@misconiusanetwork.com";
+
+export const INVESTOR_GUIDE = {
+  href: "/downloads/investor-guide.pdf",
+  downloadName: "Misconi-USA-Network-Investor-Guide.pdf",
+} as const;
